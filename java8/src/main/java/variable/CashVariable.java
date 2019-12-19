@@ -15,8 +15,8 @@ public class CashVariable {
     }
 
     private static void swap(Integer a, Integer b) {
-        Integer temp = a.intValue();
         try {
+            Integer temp = new Integer(a);
             Field value = Integer.class.getDeclaredField("value");
             value.setAccessible(true);
             value.set(a, b);
