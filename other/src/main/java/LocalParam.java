@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.net.InetAddress;
+import java.util.Arrays;
 
 /**
  * 本机参数
@@ -7,12 +8,12 @@ import java.net.InetAddress;
  * @author YangBo
  * @date 2019/03/03
  */
-public class LocalParame {
+public class LocalParam {
     public static void main(String[] args) throws Exception {
 
         InetAddress address = InetAddress.getLocalHost();
         System.out.println("本机名称是 ： " + address.getHostName());
-        System.out.println("本机IP是 ： " + address.getAddress().toString());
+        System.out.println("本机IP是 ： " + Arrays.toString(address.getAddress()));
 
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         int width = (int) dimension.getWidth();
