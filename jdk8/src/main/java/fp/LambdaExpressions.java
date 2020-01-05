@@ -2,7 +2,6 @@ package fp;
 
 /**
  * @version v1.0.0
- * @description:
  * @author: yangbo
  * @create: 2019-11-22 15:29
  */

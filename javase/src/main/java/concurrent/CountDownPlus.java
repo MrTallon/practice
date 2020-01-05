@@ -65,9 +65,9 @@ public class CountDownPlus {
     }
 
     private static void getInfo(Phaser phaser) {
-        System.out.println("阶段" + phaser.getPhase());
-        System.out.println("到达数" + phaser.getArrivedParties());
-        System.out.println("未到达数" + phaser.getUnarrivedParties());
-        System.out.println("总数" + phaser.getRegisteredParties());
+        System.out.println("阶段: " + phaser.getPhase());
+        System.out.println("到达数: " + phaser.getArrivedParties());
+        System.out.println("未到达数: " + phaser.getUnarrivedParties());
+        System.out.println("总数: " + phaser.getRegisteredParties());
     }
 }
