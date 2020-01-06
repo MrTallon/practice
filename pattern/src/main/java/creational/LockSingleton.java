@@ -57,6 +57,7 @@ class LockFreeSingleton {
 
 /**
  * 基于函数式的单例模式
+ * 枚举：解决线程同步，防止反序列化
  */
 enum FpSingleton {
     /**
