@@ -1,5 +1,6 @@
 package creational;
 
+import java.util.Arrays;
 import java.util.function.Supplier;
 
 /**
@@ -56,8 +57,22 @@ class LockFreeSingleton {
 }
 
 /**
- * 基于函数式的单例模式
  * 枚举：解决线程同步，防止反序列化
+ */
+enum Elvis {
+    /**
+     * 实例
+     */
+    INSTANCE;
+    private final String[] favoriteSongs = {"Hound Dog", "Heartbreak Hotel"};
+
+    public void printFavorites() {
+        System.out.println(Arrays.toString(favoriteSongs));
+    }
+}
+
+/**
+ * 基于函数式的单例模式
  */
 enum FpSingleton {
     /**
