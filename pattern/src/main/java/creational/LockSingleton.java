@@ -64,6 +64,7 @@ enum Elvis {
      * 实例
      */
     INSTANCE;
+
     private final String[] favoriteSongs = {"Hound Dog", "Heartbreak Hotel"};
 
     public void printFavorites() {
