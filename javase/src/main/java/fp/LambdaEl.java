@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 public class LambdaEl {
     public static void main(String[] args) {
         test1();
-
     }
 
     /**

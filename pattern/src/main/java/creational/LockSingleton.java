@@ -1,6 +1,5 @@
 package creational;
 
-import java.util.Arrays;
 import java.util.function.Supplier;
 
 /**
@@ -65,11 +64,10 @@ enum Elvis {
      */
     INSTANCE;
 
-    private final String[] favoriteSongs = {"Hound Dog", "Heartbreak Hotel"};
-
-    public void printFavorites() {
-        System.out.println(Arrays.toString(favoriteSongs));
+    public void doSomething() {
+        System.out.println("Something is Done");
     }
+
 }
 
 /**

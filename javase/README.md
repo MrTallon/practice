@@ -1,4 +1,4 @@
-# Java8 练习
+# JavaSE
 
 [《Java 编程思想》第五版](https://lingcoder.github.io/OnJava8/#/sidebar)
 

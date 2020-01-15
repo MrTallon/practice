@@ -17,7 +17,7 @@ public class Chain {
         Msg msg = new Msg();
         msg.setM("测试用例：<责任链调用模式>，反动言论");
         FilterChain fc = new FilterChain();
-        fc.add(new HtmlFilter()).add(new EmojiFilter());
+        fc.add(new HtmlFilter()).add(new TxtFilter());
         fc.doFilter(msg);
         System.out.println(msg);
     }
@@ -55,12 +55,12 @@ class UrlFilter implements Filter {
     }
 }
 
-class EmojiFilter implements Filter {
+class TxtFilter implements Filter {
 
     @Override
     public boolean doFilter(Msg msg) {
         String m = msg.getM();
-        m.replace(":", "^V^");
+        m = m.replace("反动", "爱国");
         msg.setM(m);
         return true;
     }
