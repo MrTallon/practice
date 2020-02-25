@@ -15,6 +15,7 @@
         <module>other</module>
         <module>javase</module>
         <module>pattern</module>
+        <module>virus</module>
     </modules>
     <packaging>pom</packaging>
     <url>https://tallon.ink</url>
