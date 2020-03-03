@@ -184,8 +184,6 @@ class PS2ToUSBAdapter implements USBDevice {
     private Wire getWireWithNameFromList(String name, List<Wire> ps2Wires) {
         return ps2Wires.stream().filter(x -> name.equals(x.getName())).findAny().orElse(null);
     }
-
-
 }
 
 
