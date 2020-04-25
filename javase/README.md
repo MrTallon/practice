@@ -1,6 +1,9 @@
-# JavaSE
+
+# HelloJava
 
 [《Java 编程思想》第五版](https://lingcoder.github.io/OnJava8/#/sidebar)
+
+根据《On Java 8》记录一些必要的笔记和练习
 
 ## 面向对象
 
@@ -68,45 +71,6 @@ Java8 的 Stream API 可以极大提高Java程序员的生产力，让程序员�
 3. 在多核情况下，推荐使用并行Stream API来发挥多核优势， 
 4. 单核情况下不建议使用并行Stream API。
 
-
-不管什么语言，IO 这块都是挺麻烦的
-
-并且考虑到优化，更是考验程序员的能力关键
-
-## BIO
-
-为何阻塞：
-服务端的 accept() 和 read()、write() 都是阻塞的
-
-> 效率低不代表没有用，如果确定连接的客户端非常少可以使用 BIO，
-简单方便，不容易出错
-
-
-## NIO (Non-Blocking)
-
-### Single Thread
-
-主线程的大管家（selector）每隔一段时间看一次客户端状态（轮询），负责 client 连接管理连接后的读写。
-
-> NIO 中 Oracle 设计了 ByteBuffer。听说十分不好用，反人类。
-
-### reactor模式 (响应式编程)
-
-大管家领着一帮工人（线程池）干活，
-大管家只负责连接，工人负责读写
-
-## AIO (Asynchronous IO) 
-
-运用观察者模式，异步非阻塞，封装的很好。将钩子函数直接放进了OS，拂衣而去。
-
-## Netty
-连接和业务的代码可以分开，互不影响。
-
-## Optional
-使用Optional除了赋予null语义，增加了可读性，最大的优点在于它是一种傻瓜式的防护。
-Optional迫使你积极思考引用缺失的情况，因为你必须显式地从Optional获取引用。
-直接使用null很容易让人忘掉某些情形，尽管FindBugs可以帮助查找null相关的问题，
-但是我们还是认为它并不能准确地定位问题根源。
 
 
 

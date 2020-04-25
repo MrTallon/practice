@@ -9,8 +9,6 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>face</module>
-        <module>jdk8</module>
-        <module>design</module>
         <module>refactor</module>
         <module>other</module>
         <module>javase</module>
