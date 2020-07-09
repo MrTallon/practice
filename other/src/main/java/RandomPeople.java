@@ -68,7 +68,6 @@ public class RandomPeople {
 
     static {
         registerLocation.put("北京市", 110000);
-        registerLocation.put("市辖区", 110100);
         registerLocation.put("东城区", 110101);
         registerLocation.put("西城区", 110102);
         registerLocation.put("崇文区", 110103);
