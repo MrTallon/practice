@@ -21,7 +21,6 @@ public class CountDown {
     /**
      * 一开始为线程设置一个初始值，每创建一个线程就countDown(-1)，一直减到0就执行await
      * 计数器不可以循环使用，countDown不会阻塞，await会阻塞
-     * @throws InterruptedException
      */
     private static void test1() throws InterruptedException {
         CountDownLatch countDownLatch = new CountDownLatch(5);

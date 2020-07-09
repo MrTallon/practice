@@ -11,7 +11,6 @@ import utils.GsonUtils;
 public class FaceDesc {
     public static void main(String[] agrs) {
         String results = FaceDetect.detect("face/img/hepburn.jpeg");
-        System.out.println(results);
         JsonModel model = GsonUtils.fromJson(results, JsonModel.class);
         Face face = model.result.face_list[0];
 

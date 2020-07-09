@@ -42,8 +42,9 @@ public class LambdaEl {
 
     /**
      * 判断字符串是否为数字
+     *
      * @param str 参数字符串
-     * @return  是否为数字
+     * @return 是否为数字
      */
     private static Boolean isNum(String str) {
         for (int i = 0; i < str.length(); i++) {
