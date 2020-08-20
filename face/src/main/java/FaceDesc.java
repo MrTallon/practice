@@ -9,7 +9,7 @@ import utils.GsonUtils;
  * @date 2018/07/19
  */
 public class FaceDesc {
-    public static void main(String[] agrs) {
+    public static void main(String[] args) {
         String results = FaceDetect.detect("face/img/hepburn.jpeg");
         JsonModel model = GsonUtils.fromJson(results, JsonModel.class);
         Face face = model.result.face_list[0];
