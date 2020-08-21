@@ -10,7 +10,6 @@
     <modules>
         <module>face</module>
         <module>refactor</module>
-        <module>other</module>
         <module>javase</module>
         <module>pattern</module>
         <module>virus</module>

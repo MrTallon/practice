@@ -1,3 +1,5 @@
+package other;
+
 import java.awt.*;
 import java.net.InetAddress;
 import java.util.Arrays;

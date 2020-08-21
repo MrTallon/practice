@@ -1,7 +1,9 @@
+package other;
+
 import java.util.*;
 
 /**
- * 随机生成任务信息
+ * 随机生成个人信息
  *
  * @author YangBo
  * @date 2019/03/03
