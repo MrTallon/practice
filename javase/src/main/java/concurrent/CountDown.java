@@ -27,7 +27,7 @@ public class CountDown {
         for (int i = 0; i < 5; i++) {
             new Thread(() -> {
                 try {
-                    Thread.sleep(new Double((Math.random()*3000)).longValue());
+                    Thread.sleep(new Double((Math.random() * 3000)).longValue());
                     System.out.println(Thread.currentThread().getName() + "玩家准备就绪");
                     // -1
                     countDownLatch.countDown();

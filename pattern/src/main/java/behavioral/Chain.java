@@ -18,7 +18,8 @@ public class Chain {
         msg.setM("测试用例：<责任链调用模式>，反动言论");
         FilterChain fc = new FilterChain();
         fc.add(new HtmlFilter()).add(new TxtFilter());
-        fc.doFilter(msg);
+        boolean b = fc.doFilter(msg);
+        System.out.println(b);
         System.out.println(msg);
     }
 }
@@ -68,7 +69,7 @@ class TxtFilter implements Filter {
 
 class FilterChain implements Filter {
 
-    private List<Filter> filters = new ArrayList<>();
+    private final List<Filter> filters = new ArrayList<>();
 
     public FilterChain add(Filter filter) {
         filters.add(filter);

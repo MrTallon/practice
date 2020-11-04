@@ -5,9 +5,9 @@ import java.util.concurrent.Phaser;
 /**
  * 相位器
  * phase
- *      arrive
- *      register
- *      arriveAndDerRegister：到达并注销，对阶段有操作，如果总数减到0，阶段直接变为一个负数
+ * arrive
+ * register
+ * arriveAndDerRegister：到达并注销，对阶段有操作，如果总数减到0，阶段直接变为一个负数
  *
  * @author yangbo
  * @version v1.0.0
