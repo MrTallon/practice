@@ -1,6 +1,5 @@
 package jvm;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,14 +27,5 @@ public class TestJVM {
 
     public static void main(String[] args) throws InterruptedException {
 //        fillHeap(1000);
-
-        LocalDateTime l = LocalDateTime.now();
-        LocalDateTime l1 = l.minusDays(2);
-        if (l1.plusDays(2).getDayOfYear() == l.getDayOfYear()) {
-            System.out.println("可学下一碎片");
-        }
-
-        System.out.println(l);
-
     }
 }
