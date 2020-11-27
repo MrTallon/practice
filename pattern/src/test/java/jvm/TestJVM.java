@@ -26,6 +26,12 @@ public class TestJVM {
     }
 
     public static void main(String[] args) throws InterruptedException {
+        List<String> s = null;
+        for (String s1 : s) {
+            System.out.println(s1);
+        }
+        //
+
 //        fillHeap(1000);
     }
 }
