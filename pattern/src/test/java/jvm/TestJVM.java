@@ -26,6 +26,7 @@ public class TestJVM {
     }
 
     public static void main(String[] args) throws InterruptedException {
+        // 测试分支
 //        fillHeap(1000);
     }
 }
