@@ -26,12 +26,7 @@ public class TestJVM {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        List<String> s = null;
-        for (String s1 : s) {
-            System.out.println(s1);
-        }
-        // 主分支
-
+        // 测试分支
 //        fillHeap(1000);
     }
 }
