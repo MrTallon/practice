@@ -13,7 +13,6 @@ import java.util.stream.IntStream;
 /**
  * 生成唯一数字
  *
- *
  * @author tallon
  * @version v1.0.0
  * @date 2020-09-14 18:00
@@ -24,7 +23,7 @@ public class UniqueNum {
     private static final DateTimeFormatter DF_FMT_PREFIX = DateTimeFormatter.ofPattern("yyMMddHHmmssSS");
     private static final ZoneId ZONE_ID = ZoneId.of("Asia/Shanghai");
 
-    private static void test1() {
+    public static void main(String[] args) {
         LocalDateTime dataTime = LocalDateTime.now(ZONE_ID);
         if (SEQ.intValue() > 9990) {
             SEQ.getAndSet(1000);
@@ -43,15 +42,20 @@ public class UniqueNum {
         IntStream.range(0, 1000).parallel().forEach(list::add);
         long t3 = System.currentTimeMillis();
 
-
         System.out.println("CopyOnWriteArrayList time : " + (t2 - t1));
         System.out.println("synchronizedList time : " + (t3 - t2));
-
     }
 
-    public static void main(String[] args) {
-        Integer a = null;
-        Integer b = a == 1 ? 2 : 3;
-        System.out.println(b);
+    /**
+     * 随机获得Long类型数字
+     * @return Long
+     */
+    public static Long num() {
+        LocalDateTime dataTime = LocalDateTime.now(ZONE_ID);
+        if (SEQ.intValue() > 9990) {
+            SEQ.getAndSet(1000);
+        }
+        String a = dataTime.format(DF_FMT_PREFIX) + SEQ.getAndIncrement();
+        return Long.valueOf(a);
     }
 }

@@ -1,5 +1,8 @@
 package fp;
 
+import other.RandomPeople;
+import other.UniqueNum;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,27 +19,35 @@ public class StreamTest {
 
 
     public static void main(String[] args) {
-
+        addEmp();
     }
 
     public static void addEmp() {
-//        RandomPeople
+        Emp e = new Emp();
+        e.setId(UniqueNum.num());
+        String name = RandomPeople.getName();
+        e.setName(name.split("-")[2]);
+        e.setAge(name.split("-")[1].equals("男") ? 0 : 1);
+        e.setRegion();
+        String phone = RandomPeople.getTel();
+        System.out.println(name);
+
     }
 }
 
 class Emp {
-    private Integer id;
+    private Long id;
     private String name;
     private Integer gender;
     private Integer age;
     private Integer region;
     private Double salary;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -79,8 +90,9 @@ class Emp {
     public void setSalary(Double salary) {
         this.salary = salary;
     }
+    public Emp() { }
 
-    public Emp(Integer id, String name, Integer gender, Integer age, Integer region, Double salary) {
+    public Emp(Long id, String name, Integer gender, Integer age, Integer region, Double salary) {
         this.id = id;
         this.name = name;
         this.gender = gender;

@@ -130,7 +130,7 @@ public class RandomPeople {
      *
      * @return
      */
-    private static String getName() {
+    public static String getName() {
         int index = random.nextInt(Surname.length - 1);
         int num = random.nextInt(4);
 
@@ -164,7 +164,7 @@ public class RandomPeople {
      *
      * @return
      */
-    private static String getTel() {
+    public static String getTel() {
         int index = getNum(0, telFirst.length - 1);
         String first = telFirst[index];
         String second = String.valueOf(getNum(1, 888) + 10000).substring(1);
@@ -177,7 +177,7 @@ public class RandomPeople {
      *
      * @return
      */
-    private static String makeIdCardNumber(String name) {
+    public static String makeIdCardNumber(String name) {
 
         // 身份证号
         StringBuffer card = new StringBuffer();
