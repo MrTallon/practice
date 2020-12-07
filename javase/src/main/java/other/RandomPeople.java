@@ -1,6 +1,11 @@
 package other;
 
-import java.util.*;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Random;
 
 /**
  * 随机生成个人信息
@@ -60,13 +65,13 @@ public class RandomPeople {
     /**
      * 身份证性别编号
      */
-    private static String[] girlCode = {"1", "3", "5", "7", "9"};
-    private static String[] boyCode = {"0", "2", "4", "6", "8"};
+    private static final String[] girlCode = {"1", "3", "5", "7", "9"};
+    private static final String[] boyCode = {"0", "2", "4", "6", "8"};
 
     /**
      * 户籍所在地及区域编号
      */
-    private static Map<String, Integer> registerLocation = new HashMap<>();
+    private static final Map<String, Integer> registerLocation = new HashMap<>();
 
     static {
         registerLocation.put("北京市", 110000);
@@ -86,7 +91,7 @@ public class RandomPeople {
         registerLocation.put("大兴区", 110115);
         registerLocation.put("怀柔区", 110116);
         registerLocation.put("平谷区", 110117);
-        registerLocation.put("通 县", 110200);
+        registerLocation.put("通县", 110200);
         registerLocation.put("密云县", 110228);
         registerLocation.put("延庆县", 110229);
         registerLocation.put("天津市", 120000);
@@ -103,10 +108,10 @@ public class RandomPeople {
         registerLocation.put("北辰区", 120113);
         registerLocation.put("武清区", 120114);
         registerLocation.put("宝坻区", 120115);
-        registerLocation.put("湖 县", 120200);
+        registerLocation.put("湖县", 120200);
         registerLocation.put("宁河县", 120221);
         registerLocation.put("静海县", 120223);
-        registerLocation.put("蓟　县", 120225);
+        registerLocation.put("蓟县", 120225);
     }
 
     /**
@@ -119,50 +124,25 @@ public class RandomPeople {
      */
     private static String[] emailLast = {"@qq.com", "@163.com", "@firefox.com"};
 
-    private static Random random = new Random();
 
+    private static final Random random = new Random();
+
+    /**
+     * 获取随机数
+     *
+     * @param start 起
+     * @param end   终
+     * @return 起-终 的随机数
+     */
     public static int getNum(int start, int end) {
         return (int) (Math.random() * (end - start + 1) + start);
     }
 
-    /**
-     * 获取姓名
-     *
-     * @return
-     */
-    public static String getName() {
-        int index = random.nextInt(Surname.length - 1);
-        int num = random.nextInt(4);
-
-        // 获得一个随机的姓氏
-        String name = Surname[index];
-
-        // 可以根据这个数设置产生的男女比例
-        int i = random.nextInt(3);
-
-        if (i == 2) {
-            int j = random.nextInt(girl.length() - 2);
-            if (j % 2 == 0) {
-                name = girlCode[num] + "-女-" + name + girl.substring(j, j + 2);
-            } else {
-                name = girlCode[num] + "-女-" + name + girl.substring(j, j + 1);
-            }
-
-        } else {
-            int j = random.nextInt(girl.length() - 2);
-            if (j % 2 == 0) {
-                name = boyCode[num] + "-男-" + name + boy.substring(j, j + 2);
-            } else {
-                name = boyCode[num] + "-男-" + name + boy.substring(j, j + 1);
-            }
-        }
-        return name;
-    }
 
     /**
      * 获取手机号
      *
-     * @return
+     * @return 手机号
      */
     public static String getTel() {
         int index = getNum(0, telFirst.length - 1);
@@ -173,14 +153,108 @@ public class RandomPeople {
     }
 
     /**
+     * 获取姓名
+     *
+     * @return 姓名
+     */
+    public static String getInfoName() {
+        int index = random.nextInt(Surname.length - 1);
+
+        // 获得一个随机的姓氏
+        String name = Surname[index];
+
+        // 男女比例
+        int i = random.nextInt(3);
+
+        // 1/3 的比例为女生
+        if (i == 2) {
+            int j = random.nextInt(girl.length() - 2);
+            name = j % 2 == 0 ? name + girl.substring(j, j + 2) : name + girl.charAt(j);
+
+        } else {
+            int j = random.nextInt(boy.length() - 2);
+            name = j % 2 == 0 ? name + boy.substring(j, j + 2) : name + boy.charAt(j);
+        }
+        return name;
+    }
+
+    /**
+     * 获取姓名和性别
+     *
+     * @return 姓名和性别
+     */
+    public static String getInfoNameAndGender() {
+        int index = random.nextInt(Surname.length - 1);
+
+        // 获得一个随机的姓氏
+        String name = Surname[index];
+
+        // 男女比例
+        int i = random.nextInt(3);
+
+        // 1/3 的比例为女生
+        if (i == 2) {
+            int j = random.nextInt(girl.length() - 2);
+            name = j % 2 == 0 ? name + girl.substring(j, j + 2) : name + girl.charAt(j);
+            name += "-女";
+        } else {
+            int j = random.nextInt(boy.length() - 2);
+            name = j % 2 == 0 ? name + boy.substring(j, j + 2) : name + boy.charAt(j);
+            name += "-男";
+        }
+        return name;
+    }
+
+    /**
+     * 获取详细信息
+     *
+     * @return 姓名-性别-年龄-地区-身份证号-电话-邮箱
+     */
+    public static String getInfoDetail() {
+        int index = random.nextInt(Surname.length);
+        int num = random.nextInt(5);
+        int email = random.nextInt(emailLast.length);
+        // 获得一个随机的姓氏
+        String info = Surname[index];
+
+        // 男女比例
+        int i = random.nextInt(3);
+        int j;
+        if (i == 2) {
+            j = random.nextInt(girl.length() - 2);
+            // 姓名
+            info += j % 2 == 0 ? girl.substring(j, j + 2) : girl.charAt(j);
+            // 性别
+            info += "-女";
+            // 年龄-地区-身份证号
+            info += "-" + getIdCardDetail(girlCode[num]);
+        } else {
+            j = random.nextInt(boy.length() - 2);
+            // 姓名
+            info += j % 2 == 0 ? boy.substring(j, j + 2) : boy.charAt(j);
+            // 性别
+            info += "-男";
+            // 年龄-地区-身份证号
+            info += "-" + getIdCardDetail(boyCode[num]);
+        }
+
+        // 电话
+        info += "-" + getTel();
+        // 邮箱
+        info += "-" + getNum(100, 2000) + emailLast[email];
+        return info;
+
+
+    }
+
+    /**
      * 获取身份证号码
      *
      * @return
      */
-    public static String makeIdCardNumber(String name) {
-
+    public static String getIdCardNumber(String code) {
         // 身份证号
-        StringBuffer card = new StringBuffer();
+        StringBuilder card = new StringBuilder();
 
         // 区号
         card.append(randomLocationCode().split("-")[1]);
@@ -192,12 +266,45 @@ public class RandomPeople {
         card.append(randomCode());
 
         // 17位(性别）
-        card.append(name.split("-")[0]);
+        card.append(code);
 
         // 18位
         card.append(verificationCode(card.toString()));
 
         return card.toString();
+    }
+
+    /**
+     * 身份证详细信息
+     *
+     * @param code 性别
+     * @return 年龄-地区-身份证号
+     */
+    public static String getIdCardDetail(String code) {
+        StringBuilder info = new StringBuilder();
+        // 年龄
+        String age = randomBirthday();
+        info.append(2021 - Integer.parseInt(age.substring(0, 4))).append("-");
+
+        // 地区
+        String[] location = randomLocationCode().split("-");
+        info.append(location[0]).append("-");
+
+        // 区号
+        info.append(location[1]);
+        // 出生日期
+        info.append(age);
+
+        // 15,16位
+        info.append(randomCode());
+
+        // 17位(性别）
+        info.append(code);
+
+        // 18位
+        info.append(verificationCode(info.toString().split("-")[2]));
+
+        return info.toString();
     }
 
     /**
@@ -227,7 +334,7 @@ public class RandomPeople {
                 locationName = key;
             }
         }
-        return locationName + "-" + String.valueOf(locationCode);
+        return locationName + "-" + locationCode;
     }
 
     /**
@@ -249,7 +356,7 @@ public class RandomPeople {
      *
      * @return
      */
-    private static String randomBirthday() {
+    public static String randomBirthday() {
         Calendar birthday = Calendar.getInstance();
         birthday.set(Calendar.YEAR, (int) (Math.random() * 60) + 1950);
         birthday.set(Calendar.MONTH, (int) (Math.random() * 12));
@@ -302,18 +409,9 @@ public class RandomPeople {
     }
 
     public static void main(String[] args) {
-//        People p = new People();
-//        p.setId(UUID.randomUUID().toString().replace("-", ""));
-//        String name = getName();
-//        p.setName(name.split("-")[2]);
-//        p.setGender(name.split("-")[1]);
-//        p.setPhone(getTel());
-//        p.setIdCard(makeIdCardNumber(name));
-//        p.setLocation(randomLocationCode().split("-")[0]);
-//        p.setBirth(randomBirthday());
-//        System.out.println(p);
-        for (int i = 0; i < 1000; i++) {
-            System.out.println(getName());
+        for (int i = 0; i < 30; i++) {
+            String q = getInfoDetail();
+            System.out.println(q);
         }
     }
 }
