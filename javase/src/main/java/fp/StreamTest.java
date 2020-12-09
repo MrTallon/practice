@@ -3,10 +3,12 @@ package fp;
 import other.RandomPeople;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.DoubleSummaryStatistics;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * 流式编程
@@ -48,7 +50,43 @@ public class StreamTest {
         System.out.println("员工工资总和：" + sum);
         System.out.println("员工工资所有统计：" + collect);
 
+        // 按工资增序排序
+        List<String> lsit1 = empList.stream().sorted(Comparator.comparing(Emp::getSalary)).map(Emp::getName).collect(Collectors.toList());
 
+
+        // 按工资倒序排序
+        List<String> list2 = empList.stream().sorted(Comparator.comparing(Emp::getSalary).reversed()).map(Emp::getName).collect(Collectors.toList());
+
+        // 先按工资再按年龄自然排序（从小到大）
+        List<String> list3 = empList.stream().sorted(Comparator.comparing(Emp::getSalary).reversed()).map(Emp::getName).collect(Collectors.toList());
+
+        // 先按工资再按年龄自定义排序（从大到小）
+        List<String> list4 = empList.stream().sorted((p1, p2) -> {
+            if (p1.getSalary().equals(p2.getSalary())) {
+                return p2.getAge() - p1.getAge();
+            } else {
+                return p2.getSalary() - p1.getSalary();
+            }
+        }).map(Emp::getName).collect(Collectors.toList());
+
+    }
+
+    public static void test1() {
+        String[] arr1 = {"a", "b", "c", "d"};
+        String[] arr2 = {"d", "e", "f", "g"};
+
+        Stream<String> stream1 = Stream.of(arr1);
+        Stream<String> stream2 = Stream.of(arr2);
+        // concat:合并两个流 distinct：去重
+        List<String> newList = Stream.concat(stream1, stream2).distinct().collect(Collectors.toList());
+        // limit：限制从流中获得前n个数据
+        List<Integer> collect = Stream.iterate(1, x -> x + 2).limit(10).collect(Collectors.toList());
+        // skip：跳过前n个数据
+        List<Integer> collect2 = Stream.iterate(1, x -> x + 2).skip(1).limit(5).collect(Collectors.toList());
+
+        System.out.println("流合并：" + newList);
+        System.out.println("limit：" + collect);
+        System.out.println("skip：" + collect2);
     }
 
     public static void addEmp() {
