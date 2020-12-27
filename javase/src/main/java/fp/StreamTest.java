@@ -53,7 +53,6 @@ public class StreamTest {
         // 按工资增序排序
         List<String> lsit1 = empList.stream().sorted(Comparator.comparing(Emp::getSalary)).map(Emp::getName).collect(Collectors.toList());
 
-
         // 按工资倒序排序
         List<String> list2 = empList.stream().sorted(Comparator.comparing(Emp::getSalary).reversed()).map(Emp::getName).collect(Collectors.toList());
 
@@ -162,15 +161,6 @@ class Emp {
     }
 
     public Emp() {
-    }
-
-    public Emp(Long id, String name, String gender, Integer age, String region, Integer salary) {
-        this.id = id;
-        this.name = name;
-        this.gender = gender;
-        this.age = age;
-        this.region = region;
-        this.salary = salary;
     }
 
     @Override
