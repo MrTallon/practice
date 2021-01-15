@@ -28,6 +28,7 @@ public class TestJVM {
     public static void main(String[] args) throws InterruptedException {
         // 测试分支
 //        fillHeap(1000);
-        System.out.println(Runtime.getRuntime().availableProcessors());
+        // 第一次本地commit 第三次本地commit
+        // 第二次本地commit
     }
 }
