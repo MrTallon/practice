@@ -30,5 +30,9 @@ public class TestJVM {
 //        fillHeap(1000);
         // 第一次本地commit 第三次本地commit
         // 第二次本地commit
+        // local first  // update first
+
+        // local second
+
     }
 }
